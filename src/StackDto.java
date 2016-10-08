@@ -2,7 +2,7 @@
  * Created by heeseoknoh on 06/10/2016.
  */
 public class StackDto implements Stack {
-    int top = 0;
+    int top = -1;
     char[] stackText;
     char text;
     int size;
@@ -18,15 +18,16 @@ public class StackDto implements Stack {
 
 
     @Override
-    public void pop() {
-        top--;
+    public char pop() {
+        //top--;
         System.out.println("pop 되었습니다.");
+        return stackText[top--];
     }
 
     @Override
     public void push(char text) {
         this.text = text;
-        stackText[top++] = text;
+        stackText[++top] = text;
     }
 
     @Override
@@ -35,6 +36,12 @@ public class StackDto implements Stack {
             System.out.print(text + " ");
         }
         System.out.println();
+    }
+
+    @Override
+    public int getSize() {
+
+        return stackText.length;
     }
 
 

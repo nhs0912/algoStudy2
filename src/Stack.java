@@ -3,10 +3,11 @@
  */
 public interface Stack {
 
-    public void pop();// pop 하기
+    public char pop();// pop 하기
 
     public void push(char text);
 
     public void display(); //출력 하기
 
+    public int getSize(); //stack size
 }

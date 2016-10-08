@@ -10,9 +10,17 @@ public class Main {
         Stack stack; //stack
         Scanner sc = new Scanner(System.in);
         System.out.println("샘플 갯수 입력 ");
-        int cnt = sc.nextInt(); //갯수 입력
+        int cnt=1;
+        //int cnt = sc.nextInt(); //갯수 입력
         String[] inputTexts = new String[cnt]; //들어갈 괄호
         String[] priorityTexts = new String[cnt]; //우선순위 괄호
+        //char[] resultTexts = new char[]; //결과 괄호 저장
+        char popChar = 0; //stack에 pop 한 값 저장
+        int popPriorityValue = 0; //pop한 괄호의 우선순위
+        int changeRightPriorityValue = 0; //오른쪽 괄호의 우선 순위
+        char rightParenthese = 0; //stack에 있는 오른쪽 괄호
+        char changeRightParenthese = 0; //비교를 위해 오른쪽 괄호를 왼쪽 괄호로 변경
+        char resultParenthese = 0; //우선순위 결과 괄호
         for (int i = 0; i < cnt; i++) { // 입력 받기
             String inputText = sc.next();
             String priorityText = sc.next();
@@ -33,16 +41,56 @@ public class Main {
             stack = new StackDto(inputTexts[i].length()); //Stack 생성
             for (int j = 0; j < inputTexts[i].length(); j++) {
                 // 입력된 괄호 Stack에 쌓기
-                // 오른쪽 괄호 일 때 pop 하기
-                if(inputTexts[i].charAt(j)== '{' || inputTexts[i].charAt(j)=='(' ||inputTexts[i].charAt(j)=='<'
-                        ||inputTexts[i].charAt(j)=='[') {
+                //왼쪽 괄호 일 때
+                if (inputTexts[i].charAt(j) == '{' || inputTexts[i].charAt(j) == '(' || inputTexts[i].charAt(j) == '<'
+                        || inputTexts[i].charAt(j) == '[') {
                     stack.push(inputTexts[i].charAt(j));
-                }else{
-                    
-                }
-            }
-            stack.display();
-        }
+                } else {
+                    //오른쪽 괄호를 만나면
+                    // 스택에 있는 괄호와 우선순위를 따진다.
+                    popChar = stack.pop(); //stack에 pop 한 값 저장
+                    popPriorityValue = 0; //pop한 괄호의 우선순위
+                    changeRightPriorityValue = 0; //오른쪽 괄호의 우선 순위
+                    rightParenthese = inputTexts[i].charAt(j); //stack에 있는 오른쪽 괄호
+                    changeRightParenthese = 0; //비교를 위해 오른쪽 괄호를 왼쪽 괄호로 변경
+                    //오른쪽 괄호를 왼쪽 괄호로 변경
+                    switch (rightParenthese) {
+                        case ')':
+                            changeRightParenthese = '(';
+                            break;
+                        case '}':
+                            changeRightParenthese = '{';
+                            break;
+                        case '>':
+                            changeRightParenthese = '<';
+                            break;
+                        case ']':
+                            changeRightParenthese = '[';
+                            break;
+                    }
+                    if (popChar != changeRightParenthese) {//괄호가 서로 다를 때
+                        //우선순위를 따진다.
+                        for (int k = 0; k < priorityTexts[i].length(); k++) {
+                            if (popChar == priorityTexts[i].charAt(k)) {//pop 한 괄호와 우선순위 괄호가 같을 때
+                                popPriorityValue = k; //pop한 괄호의 우선순위
+                            }
+                            if (changeRightParenthese == priorityTexts[i].charAt(k)) {
+                                changeRightPriorityValue = k;
+                            }
+                        }
+                        if (popPriorityValue < changeRightPriorityValue) {//pop한 괄호가 더 우선순위 일 때 (왼쪽 괄호가 우선순위가 높을 때 )
+                            resultParenthese = popChar;
+                        } else if (popPriorityValue > changeRightPriorityValue)//오른쪽 괄호가 우선순위가 높을 때
+                        {
+                            resultParenthese = changeRightParenthese;
+                        }
+                        System.out.println("result: "+resultParenthese);
 
+                    }
+                }
+                stack.display();
+            }
+
+        }
     }
 }
