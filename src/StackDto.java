@@ -27,7 +27,13 @@ public class StackDto implements Stack {
     public char pop() {
         //top--;
         //  System.out.println("pop 되었습니다.");
-        return stackText[top--];
+        if(isEmpty() != true) {//스택이 비어있지 않다면 pop 실행
+            return stackText[top--];
+        }
+        else{
+            System.out.println("stack이 이미 비어있습니다.");
+            return 0;
+        }
     }
 
     @Override
@@ -71,7 +77,10 @@ public class StackDto implements Stack {
             //  System.out.println("스택이 꽉 찼습니다.");
             return true;
         }
-        return false;
+        else {
+            System.out.println("stack이 Full 입니다.");
+            return false;
+        }
     }
 
 
