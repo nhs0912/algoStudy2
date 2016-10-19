@@ -144,40 +144,18 @@ public class Main {
 
             String inputText = sc.next();
             String priorityText = sc.next();
-            if(inputText.length() %2 !=0)
-            {
-               i--;
-            }else {
+//            if (inputText.length() % 2 != 0) {
+//                i--;
+//            } else {
                 inputTexts[i] = inputText; //배열 안에 저장
                 priorityTexts[i] = priorityText;
-            }
+           // }
         }
-
-//        inputTexts[0] = "(>{(>>";
-//        priorityTexts[0] = "({<[";
-
-//        inputTexts[0] = "{(>>(>";
-//        priorityTexts[0] = "({<[";
-//        inputTexts[1] = "<>";
-//        priorityTexts[1] = "({<[";
-//
-//        inputTexts[2] = "<}<)({<}]>";
-//        priorityTexts[2] = "({<[";
-//        for (int i = 0; i < inputTexts.length; i++) {//입력 된 것 보기
-//            System.out.println(inputTexts[i] + " " + priorityTexts[i]);
-//        }
 
 
         for (int i = 0; i < inputTexts.length; i++) {
             //inputText 갯수 만큼 수행
             //잘못 된 문자열 Stack으로 입력 받기
-            //  System.out.println("입력 된 갯수 : " + inputTexts[i].length());
-
-            if (inputTexts[i].length() % 2 != 0) {
-                continue;
-            } else {
-
-
                 stack = new StackDto(inputTexts[i].length()); //Stack 생성
                 char[] resultTexts = new char[inputTexts[i].length()]; //결과 저장
 
@@ -193,6 +171,7 @@ public class Main {
                         }
                         if (stack.getTop() > 0) {
                             stack.setSingle(false);
+                            stack.setFirstPop(true);
                         }
                     } else {
                         //오른쪽 괄호를 만나면
@@ -213,15 +192,8 @@ public class Main {
 
                             stack.setFirstPop(false);
                         }
-//                    else if(stack.isSingle()==true)
-//                    {
-//                        resultPair= stackEmptyCheckNum;
-//                    }
 
-                        // whereRightParenthese = stack.getTop();
                         popChar = stack.pop(); //stack에 pop 한 값 저장
-                        //     System.out.println("pop 한 값 : " + popChar);
-                        //     System.out.println("top의 값 : " + stack.getTop());
 
                         popPriorityValue = 0; //pop한 괄호의 우선순위
                         changeRightPriorityValue = 0; //오른쪽 괄호의 우선 순위
@@ -310,31 +282,27 @@ public class Main {
                             resultTexts[resultPair] = resultParenthese;
                             resultPair = whereRightParenthese - resultPair;//(inputTexts[i].length() - 1) - resultPair;
                             resultTexts[resultPair] = rightParenthese;
-                            stackEmptyCheckNum += whereRightParenthese + 1;
+                            stackEmptyCheckNum =resultPair+1 ;
+
                         }
 
 
-//
                     }
 
                 }
                 String result = "";
-                //   stack.display();
-                // System.out.println("하이");
                 for (int b = 0; b < resultTexts.length; b++) {
-                    // System.out.print(resultTexts[b]);
                     result = result + resultTexts[b];
                 }
-                //  System.out.println();
 
                 finalResultList.add(result);
                 stackEmptyCheckNum = 0;
-            }
-            // System.out.println("bye");
-            for (int o = 0; o < finalResultList.size(); o++) {
-                System.out.println(finalResultList.get(o));
-            }
 
+
+
+        }
+        for (int o = 0; o < finalResultList.size(); o++) {
+            System.out.println(finalResultList.get(o));
         }
     }
 }

@@ -10,14 +10,13 @@ class minNum {
 
 
         Integer number = 0;
-        int n = 1;
+        int n = 1; // 수식 갯수
+
         int finalResult = 0;
         while (true) { //반복문
-
             String[] formulaArr = new String[n * 2];
             Integer cnt = 1;
             for (int i = 0; i < formulaArr.length; i++) {
-
                 if (i % 2 == 0) {//짝수 자리에 * 넣기
                     formulaArr[i] = "*";
                     //formula += '*';
@@ -77,24 +76,28 @@ class minNum {
                         }
                     }
                 }
+
                 if (result == x) {
                     finalResult = n;
                     // System.out.println(n);
                     FileOutputStream fos = new FileOutputStream("output.txt", true);
                     BufferedOutputStream bos = new BufferedOutputStream(fos, 1024);
-                    PrintStream ps = new PrintStream(bos);
-                    System.setOut(ps);
+                   // PrintStream ps = new PrintStream(bos);
+                   // System.setOut(ps);
                     // file로 출력
                     System.out.println(n);
-                    System.out.close();
+                   // System.out.close();
                     break;
                 }
             }
+            //System.out.println("n= "+n);
             //x 와 더한 값이 일치하면 n을 출력하고 break;
 
             if (finalResult == n) {//n값을 찾았으면 while문 빠져나오기
+               // System.out.println("다음 숫자");
                 break;
             }
+
             n++; //n을 1씩 증가한다.
 
         }
@@ -123,7 +126,7 @@ public class HanCom3 {
             int cnt = 0;
             int[] test = null;
             int b = 0;
-            while ((sLine = inFile.readLine()) != null && sLine!="") {
+            while ((sLine = inFile.readLine()) != null && inFile.readLine()!="") {
                 if (firstCnt == 0) {
                     cnt = Integer.parseInt(sLine);
                     // System.out.println(sLine);
