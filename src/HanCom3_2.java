@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 /**
- * Created by nhs09 on 2016-10-17.
+ * Created by nhs09 on 2016-10-20.
  */
-public class Test {
+public class HanCom3_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int cnt = sc.nextInt();

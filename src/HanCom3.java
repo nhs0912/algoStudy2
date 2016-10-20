@@ -126,7 +126,7 @@ public class HanCom3 {
             int cnt = 0;
             int[] test = null;
             int b = 0;
-            while ((sLine = inFile.readLine()) != null && inFile.readLine()!="") {
+            while ((sLine = inFile.readLine()) != null) {
                 if (firstCnt == 0) {
                     cnt = Integer.parseInt(sLine);
                     // System.out.println(sLine);

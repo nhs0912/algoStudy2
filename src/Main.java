@@ -94,13 +94,7 @@ class StackDto implements Stack {
 
     @Override
     public boolean isEmpty() {
-        if (top != -1) {
-            return false;
-        } else {
-            // System.out.println("스택이 비어있습니다. ");
-
-            return true;
-        }
+        return top == -1;
     }
 
     @Override
@@ -285,21 +279,14 @@ public class Main {
                             stackEmptyCheckNum =resultPair+1 ;
 
                         }
-
-
                     }
-
                 }
                 String result = "";
                 for (int b = 0; b < resultTexts.length; b++) {
                     result = result + resultTexts[b];
                 }
-
                 finalResultList.add(result);
                 stackEmptyCheckNum = 0;
-
-
-
         }
         for (int o = 0; o < finalResultList.size(); o++) {
             System.out.println(finalResultList.get(o));
