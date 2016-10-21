@@ -8,7 +8,7 @@ class minNum {
     void Execute(int x) throws FileNotFoundException {
         //       File file = new File("output.txt");
 
-
+        System.out.println("입력된 수: " + x);
         Integer number = 0;
         int n = 1; // 수식 갯수
 
@@ -82,11 +82,11 @@ class minNum {
                     // System.out.println(n);
                     FileOutputStream fos = new FileOutputStream("output.txt", true);
                     BufferedOutputStream bos = new BufferedOutputStream(fos, 1024);
-                   // PrintStream ps = new PrintStream(bos);
-                   // System.setOut(ps);
+                    // PrintStream ps = new PrintStream(bos);
+                    // System.setOut(ps);
                     // file로 출력
                     System.out.println(n);
-                   // System.out.close();
+                    // System.out.close();
                     break;
                 }
             }
@@ -94,10 +94,14 @@ class minNum {
             //x 와 더한 값이 일치하면 n을 출력하고 break;
 
             if (finalResult == n) {//n값을 찾았으면 while문 빠져나오기
-               // System.out.println("다음 숫자");
+                // System.out.println("다음 숫자");
                 break;
             }
 
+            System.out.print(n + ", ");
+            if (n % 10 == 0) {
+                System.out.println();
+            }
             n++; //n을 1씩 증가한다.
 
         }
