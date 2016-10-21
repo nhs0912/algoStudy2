@@ -1,36 +1,37 @@
-import DataStructure.LinkedList;
-import DataStructure.ListNode;
+
+
+import java.util.Queue;
+import java.util.Stack;
 
 /**
- * Created by nhs09 on 2016-10-17.
+ * Created by nhs09 on 2016-10-21.
  */
 public class Test {
     public static void main(String[] args) {
-        LinkedList L= new LinkedList();
-        System.out.println("1)공백 리스트에 노드 3개 삽입하기");
-        L.insertLastNode("월");
-        L.insertLastNode("화");
-        L.insertLastNode("수");
-        L.printList();
+//        int[] numbers = new int[]{3, 1, 2, 7, 5, 11, 34, 8};
+//
+//
+//        for (int a : numbers)
+//            System.out.println(a);
+//
+//        Arrays.sort(numbers);
+//
+//        for (int a : numbers)
+//            System.out.println(a);
 
-        System.out.println("중간에 추가하기 ");
-        ListNode pre = L.searchNode("화");
-        if(pre ==null)
-        {
-            System.out.println("검색 실패 ");
+
+        Stack stack = new Stack();
+
+        stack.add("1");
+        stack.add("3");
+        stack.add("2");
+
+
+        for(int i=0;i<stack.size();i++) {
+            System.out.println(stack.get(i));
         }
-        else{
-            L.insertMiddleNode(pre,"목");
-            L.printList();
-        }
 
+        Queue queue = new Queue;
 
-        System.out.println("역순으로 바꾸기 ");
-        L.reverseList();
-        L.printList();
-
-        System.out.println("마지막 노드 삭제하기");
-        L.deleteLastNode();
-        L.printList();
     }
 }
