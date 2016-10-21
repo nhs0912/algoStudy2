@@ -33,6 +33,7 @@ public class Test {
                 }
             }
         }
+        //결과 출력
         for (int a : results) {
             System.out.println(a);
         }

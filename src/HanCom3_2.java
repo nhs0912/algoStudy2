@@ -33,6 +33,7 @@ public class HanCom3_2 {
                 }
             }
         }
+        //출력하기
         for (int a : results) {
             System.out.println(a);
         }
