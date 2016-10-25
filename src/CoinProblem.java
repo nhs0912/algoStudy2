@@ -21,8 +21,7 @@ public class CoinProblem {
                     for (int k = i; k < coinTypes.length && result >= 0; k++) {
                         if (coinTypes[k] == coinTypes[i]) {
                             continue;
-                        }
-                        else if (result % coinTypes[k] == 0) {
+                        } else if (result % coinTypes[k] == 0) {
                             cnt++;
                             break;
                         }
@@ -34,7 +33,7 @@ public class CoinProblem {
     }
 
     public static void main(String[] args) {
-        int[] coin = new int[]{1,5,10};
+        int[] coin = new int[]{1, 5, 10};
         int money = 100;
         System.out.println(solution(coin, money));
     }
