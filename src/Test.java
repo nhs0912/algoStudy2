@@ -126,6 +126,23 @@ class LinkedList2 {
         head = null;
     }
 
+    public ListNode searchNode(int data) {
+        try {
+            ListNode searchNode = this.head;
+            if (searchNode != null) {
+                while (searchNode.getData() != data) {
+                    searchNode = searchNode.link;
+                }
+                return searchNode;
+            }
+        } catch (NullPointerException e) {
+            //  System.out.println("찾는 값이 없습니다.");
+        }
+        //System.out.println("실행");
+        return null;
+    }
+
+
     public void insertMiddleNode(ListNode pre, int data) {
         ListNode newNode = new ListNode(data);
         newNode.link = pre.link;
@@ -139,7 +156,20 @@ class LinkedList2 {
         } else {
             //ListNode temp =head;
             newNode.link = head;
-            head= newNode;
+            head = newNode;
+        }
+    }
+
+    public void insertLastNode(int data) {
+        ListNode newNode = new ListNode(data);
+        ListNode temp = this.head;
+        if (head != null) {
+            while (temp.link != null) {
+                temp = temp.link;
+            }
+            temp.link = newNode;
+        } else {
+            this.head = newNode;
         }
     }
 
@@ -155,22 +185,18 @@ class LinkedList2 {
         }
         System.out.println(")");
     }
-
 }
 
 public class Test {
     public static void main(String[] args) {
-//
-
         LinkedList2 list = new LinkedList2();
-
         list.insertFirstNode(1);
         list.insertFirstNode(2);
-         list.insertFirstNode(3);
-
-
+        //list.insertFirstNode(3);
+        list.insertLastNode(3);
         list.print();
-
+        list.insertMiddleNode(list.searchNode(1), 5);
+        list.print();
 
     }
 }

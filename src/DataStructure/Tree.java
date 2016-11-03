@@ -4,9 +4,19 @@ package DataStructure;
  * Created by nhs09 on 2016-10-24.
  */
 public interface Tree {
-    void insert(int[] arr, int num);
+    int searchEmptyNode();
 
-    void delete(int[] arr, int num);
+    int searchNode(int num);
 
-    void lastDetele(int[] arr);
+    void insertLeftChild(int parent, int num);
+
+    void insertRightChild(int parent, int num);
+
+    void insert(int num);
+
+    void delete(int num);
+
+    void lastDetele();
+
+    void print();
 }
