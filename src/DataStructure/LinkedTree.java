@@ -6,7 +6,7 @@ package DataStructure;
 public class LinkedTree implements Tree {
     private TreeNode root;
 
-    public TreeNode makeBT(TreeNode bt1, Object data, TreeNode bt2) {
+    public TreeNode makeBT(TreeNode bt1, char data, TreeNode bt2) {
         TreeNode root = new TreeNode();
         root.data = data;
         root.left = bt1;
