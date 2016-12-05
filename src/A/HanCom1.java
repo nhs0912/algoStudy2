@@ -1,3 +1,5 @@
+package A;
+
 import java.util.Scanner;
 
 interface Triangle {
@@ -9,11 +11,7 @@ interface Triangle {
 class TriangleExecute implements Triangle {
     @Override
     public boolean Incomplete(int isDouble) {
-        if (isDouble == 2) {//2개를 그렸다면
-            return false;
-        } else { //0개 또는 1개만 그렸다면
-            return true;
-        }
+        return isDouble != 2;
     }
 
 

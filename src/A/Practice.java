@@ -1,3 +1,5 @@
+package A;
+
 /**
  * Created by nhs0912 on 2016-12-03.
  * 1. Snake 문자 <----> camel 문자 서로 변환하는 메서드 구현
