@@ -1,11 +1,8 @@
-import java.util.Scanner;
-
 /**
- * Created by heeseoknoh on 02/10/2016.
+ * Created by nhs0912 on 2016-12-05.
  */
-
-
 public class Main {
+<<<<<<< HEAD
     public static void main(String[] args) {
         Stack stack; //stack
         int resultPair = 0; //마지막 결과 괄호 짝 번호를 위한 수
@@ -153,6 +150,10 @@ public class Main {
             System.out.println();
         }
 
+=======
+
+    public static void main(String[] args) {
+>>>>>>> 85b54d5121dda86ad83419a12fc7c621155f8713
 
     }
 }
