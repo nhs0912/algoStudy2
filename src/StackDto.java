@@ -7,6 +7,12 @@ public class StackDto implements Stack {
     char text;
     int size;
 
+    @Override
+    public int getTop() {
+
+        return top;
+    }
+
     StackDto() {
 
     }
@@ -20,7 +26,7 @@ public class StackDto implements Stack {
     @Override
     public char pop() {
         //top--;
-        System.out.println("pop 되었습니다.");
+      //  System.out.println("pop 되었습니다.");
         return stackText[top--];
     }
 
@@ -32,16 +38,40 @@ public class StackDto implements Stack {
 
     @Override
     public void display() {
-        for (char text : stackText) {
-            System.out.print(text + " ");
+        if (!isEmpty()) {
+            for (int i = 0; i < top; i++) {
+                System.out.print(stackText[i] + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
+        else{
+            System.out.println("스택이 비어있습니다.");
+        }
     }
 
     @Override
     public int getSize() {
 
         return stackText.length;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        if (top != -1) {
+            return false;
+        } else {
+          // System.out.println("스택이 비어있습니다. ");
+            return true;
+        }
+    }
+
+    @Override
+    public boolean isFull() {
+        if (top == stackText.length - 1) {
+          //  System.out.println("스택이 꽉 찼습니다.");
+            return true;
+        }
+        return false;
     }
 
 
