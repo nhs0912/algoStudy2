@@ -51,15 +51,15 @@ public class CountingSort {
             //해당하는 숫자 카운터
             countArr[numbers[i]]++;
         }
-        System.out.println("CountArr[]=");
-        display();
+        //System.out.println("CountArr[]=");
+        //display();
 
         for (int i = 1; i < countArr.length; i++) {
             //누적 숫자 더하기
             countArr[i] += countArr[i - 1];
         }
-        System.out.println("누적 배열");
-        display();
+        //System.out.println("누적 배열");
+        //display();
 
         for (int i = numbers.length - 1; i >= 0; i--) {
             //정렬하기
