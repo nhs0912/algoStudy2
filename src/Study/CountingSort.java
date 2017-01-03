@@ -11,6 +11,7 @@ public class CountingSort {
     void inputNumbers() {//숫자 입력하기
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
+
         numbers = new int[size];
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = sc.nextInt();
