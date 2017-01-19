@@ -1,6 +1,8 @@
+package Study;
+
 import java.io.*;
 
-class Main {
+class Hanbit_2 {
 
     void Solve() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,6 +26,6 @@ class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        new Main().Solve();
+        new Hanbit_2().Solve();
     }
 }

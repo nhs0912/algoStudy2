@@ -1,6 +1,64 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+class Stack {
+    private int size = 0;
+    private char[] datas;
+    int top = -1;
+    boolean check = true;
+
+    Stack(int size) {
+        this.size = size;
+        datas = new char[size];
+    }
+
+    boolean isEmpty() {
+        return top == -1;
+    }
+
+    boolean isFull() {
+        return top == datas.length - 1;
+    }
+
+    void push(char data) {
+        if (!isFull()) {
+            datas[++top] = data;
+        } else {
+            //System.out.println("가득찼습니다.");
+        }
+    }
+
+    char pop() {
+        if (!isEmpty()) {
+            return datas[top--];
+        } else {
+            //System.out.println("스택에 데이터가 없습니다.");
+            check = false;
+            return 0;
+        }
+    }
+
+    char peek() {
+        if (!isEmpty()) {
+            return datas[top];
+        } else {
+            System.out.println("스택에 데이터가 없습니다.");
+            return 0;
+        }
+    }
+
+    int getSize() {
+        return size;
+    }
+
+    int getTop() {
+        return top;
+    }
+
+    boolean getCheck() {
+        return check;
+    }
+}
 
 public class Practice {
     public static void main(String[] args) throws IOException {
