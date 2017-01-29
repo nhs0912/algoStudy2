@@ -1,6 +1,8 @@
+package Study;
+
 import java.io.*;
 
-public class Solution {
+public class Merge_Sort {
     static int[] sorted;
 
     void MergeSort(int[] arr, int left, int right) {
@@ -45,7 +47,8 @@ public class Solution {
     }
 
     public static void main(String[] args) throws IOException {
-
+        //File path = new File(".");
+        System.setIn(new FileInputStream("input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -56,7 +59,7 @@ public class Solution {
         while (N-- > 0) {
             arr[index++] = Integer.parseInt(br.readLine().trim());
         }
-        new Solution().MergeSort(arr, 0, arr.length - 1);
+        new Merge_Sort().MergeSort(arr, 0, arr.length - 1);
 
         for (int i = 0; i < arr.length; i++) {
             bw.write(arr[i] + "\n");
