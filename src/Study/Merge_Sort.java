@@ -64,7 +64,10 @@ public class Merge_Sort {
         for (int i = 0; i < arr.length; i++) {
             bw.write(arr[i] + "\n");
         }
+     FileOutputStream fos = new FileOutputStream("output2.txt");
+        Writer writer = new OutputStreamWriter(fos);
         bw.close();
+
 
     }
 }
