@@ -1,96 +1,89 @@
-import java.io.*;
-import java.util.StringTokenizer;
 
-class Merge {
-    static int[] sorted;
+/**
+ * Created by nhs09 on 2018-06-03.
+ */
 
-    Merge(int size) {
-        sorted = new int[size];
+class Node{
+    Node node;
+    String data;
+    Node(){
+
+    }
+    Node(String data){
+        this.data= data;
+    }
+}
+interface myStack {
+    boolean isEmpty();
+
+    boolean isFull();
+
+    void push(String data); // input a data
+
+    void pop();
+    void print();
+}
+class myStackImpl implements myStack {
+    Node top;
+
+    @Override
+    public boolean isEmpty() {
+        return top==null? true:false;
     }
 
-    void sort(int[] arr, int begin, int end) {
-        int middle;
-        if (begin < end) {
-            middle = (begin + end) / 2;
-            sort(arr, begin, middle);
-            sort(arr, middle + 1, end);
-            merge(arr, begin, middle, end);
+    @Override
+    public boolean isFull() {
+        return false;
+    }
+
+    @Override
+    public void push(String data) {
+        Node newNode = new Node(data);//input a new data
+        if(top != null) {//이미 data가 있다면
+            newNode.node = top;
+            top = newNode;
+        }else{//처음 data를 넣을 때
+            top = newNode;
+        }
+
+    }
+
+    @Override
+    public void pop() {
+        if(!isEmpty())
+        {
+            System.out.println(top.data);
+            top=top.node;
+        }
+        else{
+            System.out.println("Stack is Empty");
         }
     }
 
-    void merge(int[] arr, int begin, int middle, int end) {
-        int left = begin;
-        int right = middle + 1;
-        int index = begin;
-        while (left <= middle && right <= end) {
-            if (arr[left] < arr[right]) {
-                sorted[index++] = arr[left++];
-            }
-            if (arr[left] > arr[right]) {
-                sorted[index++] = arr[right++];
-            }
+    @Override
+    public void print(){
+        Node printHead = top;
+        while(printHead !=null){
+            System.out.print(printHead.data+" --> " );
+            printHead=printHead.node;
         }
-        while (left <= middle && right > end) {
-            sorted[index++] = arr[left++];
-        }
-        while (left > middle && right <= end) {
-            sorted[index++] = arr[right++];
-        }
-        for (int i = begin; i <= end; i++) {
-            arr[i] = sorted[i];
-        }
+        System.out.println();
     }
 }
 
 
 class Main {
 
+    public static void main(String[] args) {
+        myStack s = new myStackImpl();
+        s.push("가");
+        s.push("나");
+        s.push("다");
+        s.print();
+        s.pop();
+        s.pop();
+        s.pop();
+        s.pop();
 
-    void display(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
     }
-
-    void order(int[] arr) {
-        Merge merge = new Merge(arr.length);
-        merge.sort(arr, 0, arr.length - 1);
-    }
-
-
-    public void Solve() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int N = Integer.parseInt(br.readLine());//갯수 입력
-        int[] A = new int[N];
-        int[] B = new int[N];
-
-        int cnt = 2;
-        while (0 < cnt--) {//배열이 2개 이므로
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int index = 0;
-            while (st.hasMoreTokens()) {
-                if (cnt == 1) {
-                    A[index++] = Integer.parseInt(st.nextToken());
-                } else {
-                    B[index++] = Integer.parseInt(st.nextToken());
-                }
-            }
-        }
-
-        display(A);
-        display(B);
-        order(A);
-      //  order(B);
-        display(A);
-      //  display(B);
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        new Main().Solve();
-    }
-
 }
